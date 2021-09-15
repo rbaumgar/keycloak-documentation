@@ -41,7 +41,7 @@ Please refer to https://docs.okd.io/latest/authentication/configuring-oauth-clie
 ==== OpenShift 4
 
 NOTE: Prior to configuring OpenShift 4 Identity Provider, please locate the correct OpenShift 4 API URL up.
-In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command (this might require installing `jq` command separately) `curl -s -k -H "Authorization: Bearer $(oc whoami -t)" \https://<openshift-user-facing-api-url>/apis/config.openshift.io/v1/infrastructures/cluster | jq ".status.apiServerURL"`. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure `X509_CA_BUNDLE` in the container and set it to `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`. Otherwise, {project_name} won't be able to communicate
+In some scenarios, that URL might be hidden from users. The easiest way to obtain it is to invoke the following command (this might require installing `jq` command separately) `oc whoami --show-server`. In most cases, the address will be protected by HTTPS. Therefore, it is essential to configure `X509_CA_BUNDLE` in the container and set it to `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`. Otherwise, {project_name} won't be able to communicate
  with the API Server.
 
 There are a just a few steps you have to complete to be able to enable login with OpenShift 4.  First, go to the `Identity Providers` left menu item and select `OpenShift v4` from the `Add provider` drop down list.  This will bring you to the `Add identity provider` page.
